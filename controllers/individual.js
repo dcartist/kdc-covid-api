@@ -37,7 +37,7 @@ router.get("/school/:school", (req, res) => {
 
 router.post("/new", (req, res) => {
     Individual.create(req.body).then(results=>res.json(results))
-}
+})
 // router.get("/results", (req, res) => {
 //     // console.log(Individual.estimatedDocumentCount())
 //     Result.find().then(clients => {
