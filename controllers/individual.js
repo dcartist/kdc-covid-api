@@ -3,9 +3,8 @@ const router = express.Router();
 const Individual = require('../models/Individuals.js')
 
 router.get("/", (req, res) => {
-    console.log(Individual.estimatedDocumentCount())
+    // console.log(Individual.estimatedDocumentCount())
     Individual.find().then(clients => {
-        // console.log()
         res.json(clients)
     })
 })
