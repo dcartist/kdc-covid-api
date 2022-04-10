@@ -3,7 +3,8 @@ const mongoose = require('../db/connection')
 var Schema = mongoose.Schema;
 const opts = {
     // Make Mongoose use Unix time (seconds since Jan 1, 1970)
-    timestamps: { currentTime: () => Math.floor(Date.now() / 1000) },
+    timestamps: { createdAt: 'created_at',
+    updatedAt: 'updated_at' },
   };
   
 var Individual = new Schema({
