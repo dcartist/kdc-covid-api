@@ -37,7 +37,7 @@ res.send("hello")
 
 
 app.use('/api', individualController)
-app.use('/results', resultController)
+// app.use('/results', resultController)
 
 app.set("port", process.env.PORT || 8080);
 
