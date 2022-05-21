@@ -27,6 +27,5 @@ var Result = new Schema({
 } ,
 opts);
 
-
 let result = mongoose.model('Result', Result)
 module.exports = result
