@@ -92,9 +92,9 @@ Individual.deleteMany({}).then(
     Individual.insertMany(newData).then(results=> console.log(results))
 ).catch(err=>console.log(err))
 
-Result.deleteMany({}).then(
-    Result.insertMany(finalResults).then(results=> console.log(results))
-).catch(err=>console.log(err))
+// Result.deleteMany({}).then(
+//     Result.insertMany(finalResults).then(results=> console.log(results))
+// ).catch(err=>console.log(err))
 
 // console.log(finalResults)
 // process.exit()
