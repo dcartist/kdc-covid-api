@@ -1,6 +1,11 @@
 
 const Individual = require('../models/Individuals')
 const dataJson = require('../data/my.json')
+
+let newData = dataJson.map((item, index)=>{
+    item.userNo = index
+    return item
+})
 // const { faker } = require('@faker-js/faker');
 // const randomName = faker.name.findName();
 // console.log(randomName)
@@ -48,5 +53,5 @@ const dataJson = require('../data/my.json')
 // "covid": "true",
 
 Individual.deleteMany({}).then(
-    Individual.insertMany(dataJson).then(results=> console.log(results))
+    Individual.insertMany(newData).then(results=> console.log(results))
 ).catch(err=>console.log(err))

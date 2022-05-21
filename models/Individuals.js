@@ -15,6 +15,7 @@ var Individual = new Schema({
   school_role: { type: String },
   symptoms: { type: String },
   covid: { type: String },
+  userNo: {type: Number},
 } ,
 opts);
 
