@@ -1,6 +1,6 @@
 
 const Individual = require('../models/Individuals')
-const Result = require('../models/Results1')
+const Result = require('../models/Results')
 const dataJson = require('../data/my.json')
 
 let newData = dataJson.map((item, index)=>{
@@ -92,9 +92,9 @@ Individual.deleteMany({}).then(
     Individual.insertMany(newData).then(results=> console.log(results))
 ).catch(err=>console.log(err))
 
-// Result.deleteMany({}).then(
-//     Result.insertMany(finalResults).then(results=> console.log(results))
-// ).catch(err=>console.log(err))
+Result.deleteMany({}).then(
+    Result.insertMany(finalResults).then(results=> console.log(results))
+).catch(err=>console.log(err))
 
 // console.log(finalResults)
 // process.exit()

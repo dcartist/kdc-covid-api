@@ -4,6 +4,8 @@ const path = require('path');
 const app = express()
 app.use(cors())
 const axios = require('axios')
+const individualController = require('./controllers/individual')
+const resultController = require('./controllers/result')
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
@@ -23,8 +25,7 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(express.json());
-const individualController = require('./controllers/individual')
-const resultController = require('./controllers/result')
+
 app.use(express.static(__dirname+'/public'));
 app.get('/', function (req, res) {
 //   res.sendFile(path.join(__dirname, '/index.html'));
