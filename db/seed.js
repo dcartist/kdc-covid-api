@@ -1,11 +1,47 @@
 
 const Individual = require('../models/Individuals')
+const Result = require('../models/Results')
 const dataJson = require('../data/my.json')
 
 let newData = dataJson.map((item, index)=>{
     item.userNo = index
     return item
 })
+
+// Aim Academy
+// Beyond Academy
+// Curiousity Academy
+// Discover Academy
+// Explore Academy
+
+let aim = dataJson.filter(a => a.school == 'Aim Academy')
+let beyond = dataJson.filter(a => a.school == 'Beyond Academy')
+let curiousity = dataJson.filter(a => a.school == 'Curiousity Academy')
+let discover = dataJson.filter(a => a.school == 'Discover Academy')
+let explore = dataJson.filter(a => a.school == 'Explore Academy')
+let students = dataJson.filter(a => a.school_role == 'student')
+let staff = dataJson.filter(a => a.school_role !== 'student')
+let with_symptoms = dataJson.filter(a => a.symptoms == "true")
+let without_symptoms = dataJson.filter(a => a.symptoms == "false")
+let no_covid = dataJson.filter(a => a.covid == "false")
+let covid = dataJson.filter(a => a.covid !== "false")
+
+let finalResults = [{
+    schools:{ 
+        Aim_Academy: aim.length,
+        Beyond_Academy: beyond.length,
+        Curiosity_Academy: curiousity.length,
+        Discover_Academy: discover.length,
+        Explore_Academy: explore.length
+    },
+
+    students: students.length,
+    staff: staff.length,
+    with_symptoms: with_symptoms.length,
+    without_symptoms: without_symptoms.length,
+    active_cases: dataJson.length
+}]
+
 // const { faker } = require('@faker-js/faker');
 // const randomName = faker.name.findName();
 // console.log(randomName)
@@ -55,3 +91,10 @@ let newData = dataJson.map((item, index)=>{
 Individual.deleteMany({}).then(
     Individual.insertMany(newData).then(results=> console.log(results))
 ).catch(err=>console.log(err))
+
+Result.deleteMany({}).then(
+    Result.insertMany(finalResults).then(results=> console.log(results))
+).catch(err=>console.log(err))
+
+console.log(finalResults)
+// process.exit()
