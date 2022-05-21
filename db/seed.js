@@ -96,5 +96,5 @@ Result.deleteMany({}).then(
     Result.insertMany(finalResults).then(results=> console.log(results))
 ).catch(err=>console.log(err))
 
-console.log(finalResults)
+// console.log(finalResults)
 // process.exit()
