@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Individual = require('../models/Individuals.js')
+// const Result = require("../models/Results")
 
 router.get("/", (req, res) => {
     // console.log(Individual.estimatedDocumentCount())
@@ -34,8 +35,53 @@ router.get("/school/:school", (req, res) => {
    
 })
 
+let choiceAcademy = function(name){
+    Result.findAndUpdate({ updateSchool }, 
+        { $inc: { schoolname: 1 } }, {new: true }).then(response => {
+        res.json(response)
+    })
+//     // let schoolname = name.replace(" ", "_")
+//     // let schoolreplaces = schools.schoolname
+//     Result.findOneAndUpdate({ school : res._id }, { $inc: { views: 1 } }, {new: true },function(err, response) {
+//         if (err) {
+//         callback(err);
+//        } else {
+//         callback(response);
+//        }
+//     })
+}
+
+router.get("/testing/:name", (req, res) =>{
+    let schoolname = req.params.name.replace(" ", "_")
+    let updateSchool = `schools.${schoolname}`
+    // res.send(schoolname)
+    Result.find({ schools }).then(response => {
+        res.json(response)
+    })
+
+    // Result.findByIdAndUpdate(entityId, { $inc: { views: 1 } }, function(err, doc) {
+    //     console.log(doc);
+    // });
+    // Result.findOneAndUpdate({ schools }, 
+    //     { $inc: { [schoolname]: 1 } }, {new: true }).then(response => {
+    //     res.json(response)
+    // })
+
+})
+
 router.post("/new", (req, res) => {
     Individual.create(req.body).then(results=>res.json(results))
+    // Models.post.Post.findOneAndUpdate({ _id: res._id }, { $inc: { views: 1 } }, {new: true },function(err, response) {
+    //     if (err) {
+    //     callback(err);
+    //    } else {
+    //     callback(response);
+    //    }
+
+
+
+
+
 })
 
 // router.put("/update/:id", (req, res) => {

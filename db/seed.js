@@ -1,6 +1,6 @@
 
 const Individual = require('../models/Individuals')
-const Result = require('../models/Results')
+const Result = require('../models/results1.js')
 const dataJson = require('../data/my.json')
 
 let newData = dataJson.map((item, index)=>{
